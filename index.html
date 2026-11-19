@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="brand"><span class="logo-box">&#9733;</span> Expense Tracker</div>
+    <nav>
+      <a href="#dashboard" class="active">Dashboard</a>
+      <a href="#budget">Budget</a>
+      <a href="#transactions">Transactions</a>
+    </nav>
+    <button id="theme-btn" class="ghost">Dark mode</button>
+  </header>
+
+  <main>
+    <!-- WELCOME -->
+    <section id="dashboard">
+      <h1>Welcome</h1>
+      <p id="welcome-text" class="muted"></p>
+
+      <!-- SUMMARY CARDS -->
+      <div class="cards">
+        <div class="card"><p class="muted">Total Income</p><h2 id="total-income" class="green">0</h2></div>
+        <div class="card"><p class="muted">Total Expenses</p><h2 id="total-expense" class="red">0</h2></div>
+        <div class="card"><p class="muted">Balance</p><h2 id="balance">0</h2></div>
+      </div>
+
+      <!-- CHART + DONUT -->
+      <div class="two">
+        <div class="card">
+          <h3>Monthly Income vs Expenses</h3>
+          <div class="key"><span class="dot inc"></span> Income <span class="dot exp"></span> Expenses</div>
+          <div id="bars" class="bars"></div>
+        </div>
+        <div class="card">
+          <h3>Spending Distribution</h3>
+          <div class="donut-row">
+            <div id="donut" class="donut"></div>
+            <ul id="legend" class="legend"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BUDGET, SAVINGS AND DEBT -->
+    <section id="budget">
+      <div class="card">
+        <h3>Budget, Savings &amp; Debt</h3>
+        <p class="muted">Enter how much you expect to spend. Each day you get an equal share (the daily average). Spend less than it and the difference is saved; spend more and it becomes debt. Income reduces debt first, then adds to savings.</p>
+        <div class="budget-form">
+          <div>
+            <label for="budget-period">Plan for</label>
+            <select id="budget-period">
+              <option value="month">This month</option>
+              <option value="week">This week (Mon&ndash;Sun)</option>
+            </select>
+          </div>
+          <div>
+            <label for="budget-amount">Expected expenditure (&#8377;)</label>
+            <input type="number" id="budget-amount" placeholder="e.g. 6000" min="1">
+          </div>
+          <button type="button" id="budget-save" class="primary">Set budget</button>
+        </div>
+        <p id="budget-error" class="error"></p>
+        <div id="budget-result"></div>
+      </div>
+    </section>
+
+    <!-- TRANSACTIONS + FORM -->
+    <section id="transactions" class="two wide-left">
+      <div class="card">
+        <h3>Transactions</h3>
+        <div class="filters">
+          <input type="text" id="search" placeholder="Search description or category">
+          <select id="type-filter">
+            <option value="all">All</option>
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+          </select>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Date</th><th>Description</th><th>Category</th><th>Amount</th><th></th></tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Add Transaction</h3>
+        <form id="form" novalidate>
+          <label for="desc">Description</label>
+          <input type="text" id="desc" placeholder="e.g. Lunch">
+
+          <label for="amount">Amount (&#8377;)</label>
+          <input type="number" id="amount" placeholder="0" min="1">
+
+          <label for="type">Type</label>
+          <select id="type">
+            <option value="expense">Expense</option>
+            <option value="income">Income</option>
+          </select>
+
+          <label for="category">Category</label>
+          <select id="category"></select>
+
+          <label for="date">Date</label>
+          <input type="date" id="date">
+
+          <p id="error" class="error"></p>
+          <button type="submit" class="primary">Add transaction</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span>Contact the developer:</span>
+    <a href="mailto:iamishan2207@gmail.com">iamishan2207@gmail.com</a>
+  </footer>
+
+  <script src="script.js?v=3"></script>
+</body>
+</html>
